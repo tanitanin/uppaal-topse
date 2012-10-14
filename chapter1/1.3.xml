@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
-</declaration><template><name x="5" y="5">Template</name><declaration>// Place local declarations here.
-</declaration><location id="id0" x="16" y="-40"></location><init ref="id0"/></template><system>// Place template instantiations here.
-Process = Template();
+
+int b, c;
+clock global_clock;</declaration><template><name x="5" y="5">P</name><declaration>// Place local declarations here.
+
+clock local_clock;</declaration><location id="id0" x="-16" y="-56"><name x="-26" y="-86">C</name></location><location id="id1" x="-128" y="-56"><name x="-138" y="-86">B</name></location><location id="id2" x="-240" y="-56"><name x="-250" y="-86">A</name></location><init ref="id2"/><transition><source ref="id1"/><target ref="id0"/><label kind="guard" x="-128" y="-104">10 &lt;= local_clock</label><label kind="assignment" x="-96" y="-40">b := 0</label></transition><transition><source ref="id2"/><target ref="id1"/><label kind="guard" x="-216" y="-104">b == 0</label><label kind="assignment" x="-232" y="-40">local_clock := 0,
+b := 1</label></transition></template><system>// Place template instantiations here.
+Process1 = P();
+Process2 = P();
+Process3 = P();
 
 // List one or more processes to be composed into a system.
-system Process;</system></nta>
+system Process1, Process2, Process3;</system></nta>
