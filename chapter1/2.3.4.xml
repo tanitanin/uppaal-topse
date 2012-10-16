@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+int check[2];
+const int closed = 0, open = 1;
+chan push[2];
+</declaration><template><name x="8" y="8">Door</name><parameter>int i, int &amp;ocheck</parameter><declaration>// Place local declarations here.
+
+clock t;</declaration><location id="id0" x="-136" y="-128"><name x="-144" y="-160">Closing</name><label kind="invariant" x="-144" y="-112">t &lt;= 6</label></location><location id="id1" x="152" y="80"><name x="144" y="48">Opening</name><label kind="invariant" x="144" y="96">t &lt;= 6</label></location><location id="id2" x="152" y="-128"><name x="144" y="-160">Open</name><label kind="invariant" x="144" y="-112">t &lt;= 8</label></location><location id="id3" x="-136" y="80"><name x="-144" y="48">Closed</name></location><init ref="id3"/><transition><source ref="id3"/><target ref="id3"/><label kind="guard" x="-176" y="112">ocheck == open</label><nail x="-208" y="144"/><nail x="-208" y="40"/></transition><transition><source ref="id3"/><target ref="id1"/><label kind="guard" x="-64" y="24">ocheck != open &amp;&amp; t &gt;= 5</label><label kind="synchronisation" x="-64" y="40">push[i]?</label><label kind="assignment" x="-64" y="56">t := 0,
+check[i] := open</label></transition><transition><source ref="id2"/><target ref="id0"/><label kind="guard" x="-64" y="-128">t &gt;= 4</label><label kind="assignment" x="-64" y="-96">t := 0</label></transition><transition><source ref="id1"/><target ref="id2"/><label kind="guard" x="160" y="-64">t == 6</label><label kind="assignment" x="160" y="-32">t := 0</label></transition><transition><source ref="id0"/><target ref="id3"/><label kind="guard" x="-168" y="-64">t == 6</label><label kind="assignment" x="-168" y="-32">t := 0,
+check[i] := closed</label></transition></template><template><name>User</name><declaration>
+clock t;</declaration><location id="id4" x="-152" y="-32"></location><init ref="id4"/><transition><source ref="id4"/><target ref="id4"/><label kind="synchronisation" x="-280" y="-40">push[1]!</label><nail x="-216" y="-72"/><nail x="-216" y="16"/></transition><transition><source ref="id4"/><target ref="id4"/><label kind="synchronisation" x="-56" y="-40">push[0]!</label><nail x="-72" y="32"/><nail x="-72" y="-72"/></transition></template><system>// Place template instantiations here.
+Door1 = Door(0,check[1]);
+Door2 = Door(1,check[0]);
+User1 = User();
+
+// List one or more processes to be composed into a system.
+system Door1,Door2,User1;</system></nta>
