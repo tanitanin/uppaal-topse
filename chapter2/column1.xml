@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+clock cpu;</declaration><template><name x="8" y="8">Periodic</name><declaration>// Place local declarations here.
+
+clock local;</declaration><location id="id0" x="208" y="-40"><name x="200" y="-72">Task</name><label kind="invariant" x="192" y="-24">local &lt;= 1000</label></location><location id="id1" x="16" y="-40"><name x="8" y="-72">Init</name></location><init ref="id1"/><transition><source ref="id0"/><target ref="id0"/><label kind="guard" x="296" y="-96">local == 1000</label><label kind="assignment" x="296" y="-56">local := 0</label><nail x="288" y="-40"/><nail x="248" y="-104"/></transition><transition><source ref="id1"/><target ref="id0"/><label kind="assignment" x="48" y="-40">local := 0</label></transition></template><template><name>Sporadic</name><declaration>
+clock local;</declaration><location id="id2" x="176" y="0"><name x="166" y="-30">Task</name></location><location id="id3" x="0" y="0"><name x="-8" y="-32">Init</name></location><init ref="id3"/><transition><source ref="id2"/><target ref="id2"/><label kind="guard" x="272" y="-64">local &gt;= 1</label><label kind="assignment" x="272" y="-24">local := 0</label><nail x="256" y="0"/><nail x="216" y="-72"/></transition><transition><source ref="id3"/><target ref="id2"/><label kind="assignment" x="32" y="0">local := 0</label></transition></template><system>// Place template instantiations here.
+P1 = Periodic();
+P2 = Sporadic();
+
+// List one or more processes to be composed into a system.
+system P1, P2;</system></nta>

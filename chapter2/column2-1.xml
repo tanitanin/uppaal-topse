@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+
+int var, var12, var34;</declaration><template><name x="5" y="5">P</name><parameter>const int pid, int &amp;varp</parameter><declaration>// Place local declarations here.
+</declaration><location id="id0" x="16" y="88"><name x="6" y="58">End</name></location><location id="id1" x="16" y="-40"><name x="6" y="-70">Init</name></location><init ref="id1"/><transition><source ref="id1"/><target ref="id0"/><label kind="assignment" x="-44" y="24">var = pid,
+varp = pid</label></transition></template><system>// Place template instantiations here.
+P1 = P(1, var12);
+P2 = P(2, var12);
+P3 = P(3, var34);
+P4 = P(4, var34);
+
+// List one or more processes to be composed into a system.
+system P1, P2, P3, P4;</system></nta>
